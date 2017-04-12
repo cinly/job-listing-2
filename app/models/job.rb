@@ -14,4 +14,9 @@ class Job < ApplicationRecord
     self.save
   end
 
+  scope :published, -> { where(is_hidden: false) }
+  scope :recent, -> { order('created_at DESC') }
+  scope :high, -> { order('wage_upper_bound DESC')}
+  scope :low, -> { order('wage_lower_bound DESC')}
+
 end
