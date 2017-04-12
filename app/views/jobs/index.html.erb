@@ -9,31 +9,43 @@
     <li><%= link_to("按照发表时间排序", jobs_path ) %></li>
   </ul>
 </div>
-</br>
-</br>
-
-
-<table class="table table-boldered">
 
 <div class="pull-right">
   <%= link_to("Add a job", new_job_path, :class => "btn btn-default") %>
 </div>
 
+<table class="table table-boldered">
+  <thead>
+    <tr>
+      <td>职位</td>
+      <td>薪资上限</td>
+      <td>薪资下限</td>
+      <td>发布时间</td>
+    </tr>
+  </thead>
+  <tbody>
   <% @jobs.each do |job| %>
   <tr>
     <td>
       <%= link_to(job.title, job_path(job)) %>
     </td>
-
     <td>
-     <%= link_to("Edit", edit_job_path(job)) %> |
-     <%= link_to("Delete", job_path(job), :method => :delete, :data=> { :confirm => "Are you sure?"}) %>
-
-   </td>
-
+      <%= job.wage_lower_bound %>
+    <td>
+      <%= job.wage_upper_bound %>
+    </td>
     <td>
       <%= job.created_at %>
     </td>
+
+    <td>
+
+     <%= link_to("Edit", edit_job_path(job)) %> |
+     <%= link_to("Delete", job_path(job), :method => :delete, :data=> { :confirm => "Are you sure?"}) %>
+     
+    </td>
+
    </tr>
    <% end %>
- </table>
+ </tbody>
+</table>
