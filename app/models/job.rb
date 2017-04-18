@@ -1,9 +1,10 @@
 class Job < ApplicationRecord
+  
   has_many :resumes
 
   validates :title, presence: true
-  validates :wage_upper_bound, presence: true
   validates :wage_lower_bound, presence: true
+  validates :wage_upper_bound, presence: true
   validates :wage_lower_bound, numericality: { greater_than: 0}
 
   def publish!
@@ -20,6 +21,5 @@ class Job < ApplicationRecord
   scope :recent, -> { order('created_at DESC') }
   scope :high, -> { order('wage_upper_bound DESC')}
   scope :low, -> { order('wage_lower_bound DESC')}
-
 
 end

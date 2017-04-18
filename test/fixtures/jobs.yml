@@ -3,7 +3,15 @@
 one:
   title: MyString
   description: MyText
+  wage_lower_bound: 1
+  wage_upper_bound: 1
+  contact_email: MyString
+  is_hidden: false
 
 two:
   title: MyString
   description: MyText
+  wage_lower_bound: 1
+  wage_upper_bound: 1
+  contact_email: MyString
+  is_hidden: false

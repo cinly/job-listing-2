@@ -16,7 +16,7 @@ class Admin::JobsController < ApplicationController
   end
 
   def create
-    @job = Job.new(job_params)
+    @job = Job.new(job_params[:id])
 
     if @job.save
       redirect_to admin_jobs_path
