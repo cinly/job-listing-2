@@ -5,4 +5,7 @@
       <%= render :partial => "jobs_item", :collection => @jobs, :as => :job %>
 
   </div>
+  <div class="text-center">
+     <%= will_paginate @jobs %>
+  </div>
 </div>

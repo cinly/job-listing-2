@@ -1,6 +1,6 @@
 
 
-<div class=" set-jobs">
+<div class="set-jobs">
   <h1> All Jobs</h1>
  <div class="dropdown clearfix pull-right">
 
@@ -19,12 +19,15 @@
     <li><%= link_to("按照薪资上限排序", jobs_path(:order => "by_upper_bound")) %></li>
     <li><%= link_to("按照发表时间排序", jobs_path ) %></li>
   </ul>
+
 </div>
 <tr></tr>
 
-<!--div class="pull-right"-->
+
+<!--% if user_signed_in? && current_user.admin? %-->
   <!--%= link_to("Add a job", new_job_path, :class => "btn btn-default") %-->
-<!--/div-->
+<!--% end %-->
+
 
 <table class="table table-boldered table-striped custab" >
   <thead>
@@ -48,7 +51,7 @@
     <td><%= job.wage_upper_bound %></td>
     <td><%= job.created_at %></td>
     <td>
-     <% if user_signed_in? && current_user.admin? %>
+     <% if current_user && current_user == job.user %>
       <%= link_to("Edit", edit_job_path(job)) %> |
       <%= link_to("Delete", job_path(job), :method => :delete, :data=> { :confirm => "Are you sure?"}) %>
      <% end %>
