@@ -2,7 +2,7 @@ class Account::JobsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-      @jobs = Job.recent.paginate(:page => params[:page], :per_page => 6)
+      @jobs = current_user.applied_jobs.recent.paginate(:page => params[:page], :per_page => 6)
   end
 
   def show
