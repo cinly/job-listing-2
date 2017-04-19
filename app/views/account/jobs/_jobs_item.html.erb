@@ -14,7 +14,7 @@
            <% if current_user && current_user.has_applied?(job) %>
              <%= link_to("Has Applied", new_job_resume_path(job), class: "btn btn-info btn-sm disabled", method: :get) %>
            <% else %>
-             <%= link_to("Quick Apply", new_job_resume_path(job), class: "btn btn-info btn-sm", method: :get) %>
+             <%= link_to("Apply", new_job_resume_path(job), class: "btn btn-info btn-sm", method: :get) %>
            <% end %>
         </div>
 
