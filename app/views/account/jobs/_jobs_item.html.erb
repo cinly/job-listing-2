@@ -1,0 +1,22 @@
+
+    <div class="col-md-6 col-lg-10 col-lg-offset-12">
+
+      <tr><p><%= link_to(job.title, account_job_path(job)) %></p></tr>
+        <td>
+          <tr><li><i class="fa fa-dollar" aria-hidden="true"></i> 薪资:<%= job.wage_lower_bound %> ~ <%= job.wage_upper_bound %> </li></tr>
+          <tr><li><i class="fa fa-address-card-o" aria-hidden="true"></i>  <%= job.category %></li></tr>
+          <tr><li><i class="fa fa-envelope" aria-hidden="true"></i>  <%= job.contact_email %></li></tr>
+          <tr><li><i class="fa fa-clock-o" aria-hidden="true"></i>  <%= time_ago_in_words(job.created_at) %> ago</li></tr>
+        </td>
+
+
+         <div class="pull-right">
+           <% if current_user && current_user.has_applied?(job) %>
+             <%= link_to("Has Applied", new_job_resume_path(job), class: "btn btn-info btn-sm disabled", method: :get) %>
+           <% else %>
+             <%= link_to("Apply", new_job_resume_path(job), class: "btn btn-info btn-sm", method: :get) %>
+           <% end %>
+        </div>
+        <hr>
+
+     </div>

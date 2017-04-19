@@ -1,0 +1,67 @@
+
+
+<div class="set-jobs">
+  <h1> All Jobs</h1>
+ <div class="dropdown clearfix pull-right">
+
+  <button class="btn btn-info dropdown-toggle" type="button" id="dropdownMenuDivider" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+    排序
+    <span class="caret"></span>
+  </button>
+  <br><br>
+  <li>
+    <% if user_signed_in? && current_user.admin? %>
+     <%= link_to(content_tag(:i, " Back to Admin", class: "fa fa-reply-all"), admin_jobs_path) %>
+    <% end %>
+  </li>
+  <ul class="dropdown-menu" aria-labelledby="dropdownMenuDivider">
+    <li><%= link_to("按照薪资下限排序", jobs_path(:order => "by_lower_bound")) %></li>
+    <li><%= link_to("按照薪资上限排序", jobs_path(:order => "by_upper_bound")) %></li>
+    <li><%= link_to("按照发表时间排序", jobs_path ) %></li>
+  </ul>
+
+</div>
+<tr></tr>
+
+
+<!--% if user_signed_in? && current_user.admin? %-->
+  <!--%= link_to("Add a job", new_job_path, :class => "btn btn-default") %-->
+<!--% end %-->
+
+
+<table class="table table-boldered table-striped custab" >
+  <thead>
+    <tr>
+      <td>职位</td>
+      <td>薪资下限</td>
+      <td>薪资上限</td>
+      <td>发布时间</td>
+      <td>
+        <% if user_signed_in? && current_user.admin? %>
+        管理选项
+        <% end %>
+      </td>
+    </tr>
+  </thead>
+  <tbody>
+  <% @jobs.each do |job| %>
+  <tr>
+    <td><%= link_to(job.title, job_path(job)) %></td>
+    <td><%= job.wage_lower_bound %></td>
+    <td><%= job.wage_upper_bound %></td>
+    <td><%= job.created_at %></td>
+    <td>
+     <% if current_user && current_user == job.user %>
+      <%= link_to("Edit", edit_job_path(job)) %> |
+      <%= link_to("Delete", job_path(job), :method => :delete, :data=> { :confirm => "Are you sure?"}) %>
+     <% end %>
+    </td>
+   </tr>
+   <% end %>
+  </tbody>
+ </table>
+
+    <div class="text-center">
+       <%= will_paginate @jobs %>
+    </div>
+</div>
