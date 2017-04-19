@@ -44,7 +44,9 @@ border-radius: 0;//圆角为0
 body {
   font-family: 'Open sans', sans-serif;
   font-weight: 300;
-  background: linear-gradient(#E1F5FE,#90A4AE,#E0F7FA,#C8E6C9,#78909C);
+  background: linear-gradient(to right, rgba(255,255,255,0), rgba(255,255,255,1)), image_url('d.jpg');
+  /*background-image:image_url('e.jpg');*/
+  /*background: linear-gradient(#E1F5FE,#90A4AE,#E0F7FA,#C8E6C9,#78909C);*/
   /*box-shadow: inset 0 0 100px hsla(0,0%,0%,.3); */
   margin-bottom: 150px;
 }
@@ -306,3 +308,6 @@ body {
 .login-help{
   font-size: 12px;
 }
+
+.span-1   { width: 1500px; }
+.span-2   { width: 1500px; }

@@ -37,7 +37,7 @@ gem 'font-awesome-rails'
 gem 'carrierwave'
 gem 'ransack'
 gem 'seo_helper'
-gem 'will_paginate-bootstrap'
+gem 'will_paginate'
 
 
 group :development, :test do
