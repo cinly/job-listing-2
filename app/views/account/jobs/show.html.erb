@@ -1,7 +1,8 @@
 <div class="container-fluid job-show-page">
   <div class="col-md-10 col-md-offset-1 col-lg-8 col-lg-offset-2">
-    <h3 class="text-center"><%= @job.title %> at <%= @job.company %></h1>
+    <h3 class="text-center"><%= @job.title %> </h3>
     <hr>
+    <h5>
     <div class="job-content">
       <div class="pull-right">
         <%= link_to(content_tag(:i, " Back", class: "fa fa-arrow-left"), account_jobs_path) %>
@@ -28,6 +29,6 @@
         <% end %>
       </div>
     </div>
-
+  </h5>
   </div>
 </div>
